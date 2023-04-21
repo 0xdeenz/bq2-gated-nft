@@ -4,4 +4,4 @@ NFT that can only be obtained by first proving a proof of ownership for a given 
 
 ## Demo version
 
-Currently deployed to Polygon Mumbai: [0x21B4...87a2](https://mumbai.polygonscan.com/address/0x21B42DBa6c0210BA835B0A2C345F7c36540F87a2).
+Currently deployed to Polygon Mumbai: [0xEeA8...3aC6](https://mumbai.polygonscan.com/address/0xEeA8CA7Ba0283156613F574F62aC899E42883aC6).

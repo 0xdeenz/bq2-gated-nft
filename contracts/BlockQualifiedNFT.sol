@@ -3,10 +3,9 @@ pragma solidity ^0.8.4;
 
 import "@bq-core/contracts/interfaces/ICredentialsRegistry.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
-contract BlockQualifiedNFT is ERC721, Ownable {
+contract BlockQualifiedNFT is ERC721 {
     using Counters for Counters.Counter;
 
     Counters.Counter private _tokenIdCounter;
@@ -31,18 +30,17 @@ contract BlockQualifiedNFT is ERC721, Ownable {
         uint256 merkleTreeRoot,
         uint256 nullifierHash,
         uint256[8] calldata proof
-    ) public onlyOwner {
-        uint256 externalNullifier = uint(keccak256(abi.encode(
-            recipient, 
-            requiredCredential,
-            this.symbol()
-        )));
+    ) public {
+        // formatBytes32String("bq-demo-credential-gated-token")
+        uint256 externalNullifier = 0x62712d64656d6f2d63726564656e7469616c2d67617465642d746f6b656e0000;
+
+        uint256 signal = uint256(uint160(recipient));
 
         credentialsRegistry.verifyCredentialOwnershipProof(
             requiredCredential,
             merkleTreeRoot,
             nullifierHash,
-            uint256(uint160(recipient)),
+            signal,
             externalNullifier,
             proof
         );
